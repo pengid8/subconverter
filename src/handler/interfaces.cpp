@@ -1371,7 +1371,7 @@ int simpleGenerator() {
             if (y.first == "User-Agent") {
                 // 注意：根据你使用的网络库（如 libcurl, cpr, httplib 等），
                 // 这里的 header 赋值语法可能是 emplace、insert 或类似键值对赋值，请按你的库规范修改：
-                request.header.emplace("User-Agent", y.second);
+                request.headers.emplace("User-Agent", y.second);
                 // 如果你的 header 是 map，也可以写成：request.header["User-Agent"] = y.second;
             } 
             // 3. 其他常规参数放入 argument
