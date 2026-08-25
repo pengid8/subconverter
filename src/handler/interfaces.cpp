@@ -1356,11 +1356,29 @@ int simpleGenerator() {
             }
             ini.get_items(allItems);
             allItems.emplace("expand", "true");
-            for (auto &y: allItems) {
-                if (y.first == "path")
-                    continue;
+            // for (auto &y: allItems) {
+            //     if (y.first == "path")
+            //         continue;
+            //     request.argument.emplace(y.first, y.second);
+            // }
+            for (auto &y : allItems) {
+            // 1. 跳过 "path"
+            if (y.first == "path") {
+                continue;
+            }
+            
+            // 2. 如果是 User-Agent，设置到请求头 header 中
+            if (y.first == "User-Agent") {
+                // 注意：根据你使用的网络库（如 libcurl, cpr, httplib 等），
+                // 这里的 header 赋值语法可能是 emplace、insert 或类似键值对赋值，请按你的库规范修改：
+                request.header.emplace("User-Agent", y.second);
+                // 如果你的 header 是 map，也可以写成：request.header["User-Agent"] = y.second;
+            } 
+            // 3. 其他常规参数放入 argument
+            else {
                 request.argument.emplace(y.first, y.second);
             }
+        }
             content = subconverter(request, response);
         }
         if (response.status_code != 200) {
