@@ -1,5 +1,11 @@
 # subconverter
 
+> **Fork 说明**：
+> 本仓库 Fork 自原项目 [原作者/原项目名](https://github.com/asdlokj1qpi23/subconverter)。
+> 
+> **本次修改/优化：**
+> - 支持从配置文件generate.ini中读取并自定义 HTTP 请求头（如 `User-Agent`）。
+
 Utility to convert between various proxy subscription formats.
 
 original git: https://github.com/asdlokj1qpi23/subconverter
